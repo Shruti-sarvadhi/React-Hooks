@@ -13,4 +13,4 @@ yarn creat vite example-3 --template react
 7. Pagination Control
 8. Search Filter Query
 9. Drag-and-Drop Position
-10. Rate Limiting Clicks
+10. Rate Limiting Clicks to prevent multiple submit
