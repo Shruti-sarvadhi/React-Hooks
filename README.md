@@ -20,7 +20,7 @@ yarn creat vite example-3 --template react
 2. Managing Timers or Intervals
 3. Multi-Language Localization 
 4. Running on state change: trigger animation on new array value
-5. Running on props change: update paragraph list on fetched API data update
+5. Running on props change: Fetching new data when a prop changes
 6. Subscribing to Window Events
 7. Local Storage Sync
 8. Performing Cleanup Operations
