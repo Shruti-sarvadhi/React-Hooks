@@ -6,6 +6,7 @@ import axios from "axios";
 function App() {
   const [users, setUsers] = useState([]); 
 
+  //fetch API when app loads so this runs only once 
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
