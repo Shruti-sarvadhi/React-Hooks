@@ -25,5 +25,5 @@ yarn creat vite example-3 --template react
 7. Local Storage Sync
 8. Performing Cleanup Operations-https://hackernoon.com/cleanup-functions-in-reacts-useeffect-hook-explained
 9. Integrating with Third-Party Libraries
-10. Managing Timers or Intervals
+10. Debouncing Input for Search-Delay API calls until the user stops typing.
 
