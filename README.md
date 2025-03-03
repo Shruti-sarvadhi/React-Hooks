@@ -23,7 +23,7 @@ yarn creat vite example-3 --template react
 5. Running on props change: Fetching new data when a prop changes
 6. Subscribing to Window Events
 7. Local Storage Sync
-8. Performing Cleanup Operations
+8. Performing Cleanup Operations-https://hackernoon.com/cleanup-functions-in-reacts-useeffect-hook-explained
 9. Integrating with Third-Party Libraries
 10. Managing Timers or Intervals
 
