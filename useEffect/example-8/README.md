@@ -1,0 +1,2 @@
+Performing Cleanup Operations- cancel the ongoing API request when the component is unmounted
+ If the component is unmounted (for example, if the user navigates away from the component), the ongoing API request will still be in progress in the background. This can cause unnecessary network traffic and potentially result in data inconsistencies if the response from the API is received after the component has been unmounted.
