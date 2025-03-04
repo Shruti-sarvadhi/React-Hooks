@@ -27,3 +27,51 @@ yarn creat vite example-3 --template react
 9. Integrating with Third-Party Libraries
 10. Debouncing Input for Search-Delay API calls until the user stops typing.
 
+# useMemo
+1. Basic Computation Optimization
+2. Filtering a List Efficiently
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+
+# useCallback
+1. 
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+
+# useRef
+1. 
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+
+# useReducer
+1. 
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+
