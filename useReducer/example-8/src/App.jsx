@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useReducer } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const initialState = { dragging: false, position: { x: 0, y: 0 } };
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function reducer(state, action) {
+  switch (action.type) {
+    case 'start':
+      return { ...state, dragging: true };
+    case 'move':
+      return { ...state, position: { x: action.payload.x, y: action.payload.y } };
+    case 'end':
+      return { ...state, dragging: false };
+    default:
+      throw new Error();
+  }
 }
 
-export default App
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleMouseMove = (e) => {
+    if (state.dragging) {
+      dispatch({ type: 'move', payload: { x: e.clientX, y: e.clientY } });
+    }
+  };
+
+  return (
+    <div onMouseMove={handleMouseMove}>
+      <div
+        style={{ position: 'absolute', left: state.position.x, top: state.position.y, width: '100px', height: '100px', background: 'red' }}
+        onMouseDown={() => dispatch({ type: 'start' })}
+        onMouseUp={() => dispatch({ type: 'end' })}
+      />
+    </div>
+  );
+}
+
+export default App;
