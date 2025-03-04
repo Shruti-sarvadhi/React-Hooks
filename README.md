@@ -41,7 +41,7 @@ yarn creat vite example-3 --template react
 
 # useCallback
 1. Prevents re-rendering a child component when the callback is passed as a prop.
-2.
+2. Memoizes a callback that depends on a state value
 3.
 4.
 5.
