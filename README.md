@@ -30,7 +30,7 @@ yarn creat vite example-3 --template react
 # useMemo
 1. Basic Computation Optimization
 2. Filtering a List Efficiently
-3.
+3. Preventing Unnecessary Re-renders in Child Components
 4.
 5.
 6.
