@@ -22,7 +22,6 @@ const Parent = () => {
 
   console.log("Parent rerendered");
    //Memoizing values so they do not change unnecessarily
-   //so when child 1 rendered parent is no re-rendering 
    const memoizedChild1 = useMemo(() => child1, [child1]);
    const memoizedChild2 = useMemo(() => child2, [child2]);
 
