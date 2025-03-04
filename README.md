@@ -44,7 +44,7 @@ yarn creat vite example-3 --template react
 2. Memoizes a callback that depends on a state value
 3. Memoizes a debounced callback for handling input changes.
 4. Prevents re-creating callbacks for each item in a list.
-5.
+5. Memoizing a toggle function
 6.
 7.
 8.
