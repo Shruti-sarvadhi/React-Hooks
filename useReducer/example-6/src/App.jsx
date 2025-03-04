@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useReducer, useEffect, useRef } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const initialState = { time: 0, isRunning: false };
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function reducer(state, action) {
+  switch (action.type) {
+    case 'start':
+      return { ...state, isRunning: true };
+    case 'stop':
+      return { ...state, isRunning: false };
+    case 'reset':
+      return { time: 0, isRunning: false };
+    case 'run':
+      return { ...state, time: state.time + 1 };
+    default:
+      throw new Error();
+  }
 }
 
-export default App
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const intervalRef = useRef();
+
+  useEffect(() => {
+    if (state.isRunning) {
+      intervalRef.current = setInterval(() => dispatch({ type: 'run' }), 1000);
+    } else {
+      clearInterval(intervalRef.current);
+    }
+    return () => clearInterval(intervalRef.current);
+  }, [state.isRunning]);
+
+  return (
+    <div>
+      <p>Time: {state.time}s</p>
+      <button onClick={() => dispatch({ type: 'start' })}>Start</button>
+      <button onClick={() => dispatch({ type: 'stop' })}>Stop</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+    </div>
+  );
+}
+
+export default App;
