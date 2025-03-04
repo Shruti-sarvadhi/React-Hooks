@@ -40,7 +40,7 @@ yarn creat vite example-3 --template react
 10. Optimizing transformation of raw data into a displayable format.
 
 # useCallback
-1. 
+1. Prevents re-rendering a child component when the callback is passed as a prop.
 2.
 3.
 4.
