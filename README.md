@@ -47,9 +47,9 @@ yarn creat vite example-3 --template react
 5. Memoizing a toggle function
 6. Handling Form Submission
 7. Callback with External API Call
-8.
-9.
-10.
+8. useCallback for Click Events in List Items
+9. Memoizes a function to reset a timer.
+10. Memoizes a callback that applies conditional updates
 
 # useRef
 1. 
