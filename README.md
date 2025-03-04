@@ -68,13 +68,13 @@ https://medium.com/@umaishassan/what-the-heck-is-memo-usememo-and-usecallback-in
 # useReducer
 https://dev.to/anshumanmahato/for-intricate-state-handling-try-out-the-usereducer-hook-1952
 1. Counter with Multiple Actions
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
+2. Form Handler
+3. Shopping Cart
+4. Todo List
+5. Toggling between light and dark themes
+6. Stopwatch with start, stop, and reset functionality
+7. API Data Fetching
+8. Drag and Drop
+9. Undo and Redo
+10. Expense Tracker
 
