@@ -31,8 +31,8 @@ yarn creat vite example-3 --template react
 1. Basic Computation Optimization
 2. Filtering a List Efficiently
 3. Preventing Unnecessary Re-renders in Child Components
-4.
-5.
+4. Optimized Parent-Child State Updates with useMemo
+5. Chart Data Preparation
 6.
 7.
 8.
