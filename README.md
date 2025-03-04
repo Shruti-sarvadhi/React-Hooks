@@ -32,8 +32,8 @@ yarn creat vite example-3 --template react
 2. Filtering a List Efficiently
 3. Preventing Unnecessary Re-renders in Child Components
 4. Optimized Parent-Child State Updates with useMemo
-5. Chart Data Preparation
-6.
+5. Memoizing processed data for chart rendering.
+6. Memoizing processed API data.
 7.
 8.
 9.
