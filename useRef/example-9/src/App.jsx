@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRef, useState, useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const canvasRef = useRef(null);//canvasRef stores the reference to the canvas element
+  const ctxRef = useRef(null);//ctxRef stores the 2D drawing context to perform drawing actions.
+  const [drawing, setDrawing] = useState(false);
+
+  useEffect(() => {
+    
+    const canvas = canvasRef.current;
+    canvas.width = 600; // Set canvas width
+    canvas.height = 400; // Set canvas height
+    const ctx = canvas.getContext("2d");
+    ctx.lineWidth = 3; // Set line thickness
+    ctx.lineCap = "round"; // Round edges for smooth drawing
+    ctx.strokeStyle = "black"; // Line color
+    ctxRef.current = ctx;
+  }, []);
+
+  const startDrawing = (event) => {
+    ctxRef.current.beginPath();
+    ctxRef.current.moveTo(
+      event.nativeEvent.offsetX,
+      event.nativeEvent.offsetY
+    );
+    setDrawing(true);
+  };
+
+  const draw = (event) => {
+    if (!drawing) return;
+    ctxRef.current.lineTo(
+      event.nativeEvent.offsetX,
+      event.nativeEvent.offsetY
+    );
+    ctxRef.current.stroke();
+  };
+
+  const stopDrawing = () => {
+    ctxRef.current.closePath();
+    setDrawing(false);
+  };
+
+  const clearCanvas = () => {
+    ctxRef.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <h2>Canvas Drawing with useRef</h2>
+      <canvas
+        ref={canvasRef}
+        style={{ border: "1px solid black", cursor: "crosshair" }}
+        onMouseDown={startDrawing}
+        onMouseMove={draw}
+        onMouseUp={stopDrawing}
+        onMouseLeave={stopDrawing}
+      ></canvas>
+      <br />
+      <button
+        onClick={clearCanvas}
+        style={{
+          marginTop: "10px",
+          padding: "10px",
+          backgroundColor: "red",
+          color: "white",
+          border: "none",
+          cursor: "pointer",
+        }}
+      >
+        Clear Canvas
+      </button>
+    </div>
+  );
 }
 
-export default App
+export default App;
