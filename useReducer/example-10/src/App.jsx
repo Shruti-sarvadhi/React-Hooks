@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useReducer } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const initialState = {
+  expenses: [],
+  description: '',
+  amount: ''
+};
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function reducer(state, action) {
+  switch (action.type) {
+    case 'FIELD':
+      return { ...state, [action.field]: action.value };
+    case 'EXPENSE':
+      return {
+        expenses: [...state.expenses, { 
+          id: Date.now(), 
+          description: state.description, 
+          amount: Number(state.amount) 
+        }],
+        description: '',
+        amount: ''
+      };
+    default:
+      return state;
+  }
 }
 
-export default App
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const total = state.expenses.reduce((sum, expense) => sum + expense.amount, 0);
+
+  return (
+    <div>
+      <h1>Expense Tracker</h1>
+      <input
+        value={state.description}
+        onChange={(e) => dispatch({ type: 'FIELD', field: 'description', value: e.target.value })}
+        placeholder="Description"
+      />
+      <input
+        type="number"
+        value={state.amount}
+        onChange={(e) => dispatch({ type: 'FIELD', field: 'amount', value: e.target.value })}
+        placeholder="Amount"
+      />
+      <button onClick={() => dispatch({ type: 'EXPENSE' })}>Add</button>
+      <ul>
+        {state.expenses.map(expense => (
+          <li key={expense.id}>
+            {expense.description}: ${expense.amount}
+          </li>
+        ))}
+      </ul>
+      <h3>Total: ${total.toFixed(2)}</h3>
+    </div>
+  );
+}
+
+export default App;
