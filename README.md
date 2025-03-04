@@ -35,7 +35,7 @@ yarn creat vite example-3 --template react
 5. Memoizing processed data for chart rendering.
 6. Memoizing processed API data.
 7. Memoizing dynamic styles for a component.
-8.
+8. Optimizing sorting of an array.
 9.
 10.
 
