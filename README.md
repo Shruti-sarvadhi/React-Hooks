@@ -43,7 +43,7 @@ yarn creat vite example-3 --template react
 1. Prevents re-rendering a child component when the callback is passed as a prop.
 2. Memoizes a callback that depends on a state value
 3. Memoizes a debounced callback for handling input changes.
-4.
+4. Prevents re-creating callbacks for each item in a list.
 5.
 6.
 7.
