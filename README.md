@@ -66,7 +66,8 @@ https://medium.com/@umaishassan/what-the-heck-is-memo-usememo-and-usecallback-in
 10.
 
 # useReducer
-1. 
+https://dev.to/anshumanmahato/for-intricate-state-handling-try-out-the-usereducer-hook-1952
+1. Counter with Multiple Actions
 2.
 3.
 4.
