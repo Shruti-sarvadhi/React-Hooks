@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import { useEffect } from 'react';
+import { useState,useReducer } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+const initialState={
+  id:1,
+  loading:false,
+  data:null,
+  error:null
+}
 
+const reducer=(state,action)=>{
+  switch(action.type){
+    case "CALL":return {...state,loading:true,error:null};
+    case "SUCCESS":return {...state,loading:false,data:action.data};
+    case "FAIL":return {...state,loading:false,error:action.error};
+    case "NEXT":return {...state,loading:false,id:state.id+1};
+    default:return state
+  }
+}
+
+const App = () => {
+  const [state,dispatch]=useReducer(reducer,initialState)
+
+  useEffect(()=>{
+    dispatch({type:"CALL"})
+    fetch(`https://jsonplaceholder.typicode.com/posts/${state.id}`)
+    .then((res)=>res.json())
+    .then((data)=>dispatch({type:"SUCCESS",data:data}))
+    .catch((err)=>dispatch({type:"FAIL",error:err.message}))
+  },[state.id])
+
+  if(state.loading) return <div>Loading...</div>
+  if(state.error) return <div>{state.error}</div>
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>{state.data?.title}</h1>
+      <p>{state.id}</p>
+      <button onClick={()=>dispatch({type:"NEXT"})}>next</button>
+    </div>
   )
 }
 
