@@ -1,35 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useReducer } from 'react';
+import { useState } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const initialState = { 
+  past:[],
+  present:[],
+  future:[]
+ };
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function reducer(state, action) {
+  switch (action.type) {
+    case 'add':
+      return {
+        past:[...state.past,state.present],//save current state in past
+        present:[...state.present,action.payload],//update present
+        future:[] };
+    case 'undo':
+      if (state.past.length === 0) return state;
+      return {
+        past:state.past.slice(0,-1),//remove last state from past
+        present:state.past[state.past.length - 1],//get last state from past
+        future:[state.present, ...state.future]};//add current state to future
+    case 'redo':
+      if (state.future.length === 0) return state;
+      return {
+        past: [...state.past, state.present],//save current state in past
+        present: state.future[0],//save future in present
+        future: state.future.slice(1),//remove next state from future
+      };
+    default:
+      throw new Error();
+  }
 }
 
-export default App
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [input,setInput]=useState("")
+
+  const handleAdd=()=>{
+    if (input.trim()) {
+      dispatch({ type: 'add', payload: input });
+      setInput('');
+    }
+  }
+ 
+
+  return (
+    <div>
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Add an item"
+      />
+      <button onClick={handleAdd}>Add</button>
+      <button onClick={() => dispatch({ type: 'undo' })} disabled={state.past.length === 0}>
+        Undo
+      </button>
+      <button onClick={() => dispatch({ type: 'redo' })} disabled={state.future.length === 0}>
+        Redo
+      </button>
+      <ul>
+        {state.present.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+
+    </div>
+  );
+}
+
+export default App;
