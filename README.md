@@ -27,7 +27,7 @@ yarn creat vite example-3 --template react
 9. Integrating with Third-Party Libraries
 10. Debouncing Input for Search-Delay API calls until the user stops typing.
 
-# useMemo
+# useMemo-https://medium.com/@umaishassan/what-the-heck-is-memo-usememo-and-usecallback-in-react-3b1dc12665ad
 1. Basic Computation Optimization
 2. Filtering a List Efficiently
 3. Preventing Unnecessary Re-renders in Child Components
@@ -39,7 +39,7 @@ yarn creat vite example-3 --template react
 9. Memoizing a computed value based on multiple inputs.
 10. Optimizing transformation of raw data into a displayable format.
 
-# useCallback
+# useCallback-https://medium.com/@umaishassan/what-the-heck-is-memo-usememo-and-usecallback-in-react-3b1dc12665ad
 1. Prevents re-rendering a child component when the callback is passed as a prop.
 2. Memoizes a callback that depends on a state value
 3. Memoizes a debounced callback for handling input changes.
