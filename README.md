@@ -34,7 +34,7 @@ yarn creat vite example-3 --template react
 4. Optimized Parent-Child State Updates with useMemo
 5. Memoizing processed data for chart rendering.
 6. Memoizing processed API data.
-7.
+7. Memoizing dynamic styles for a component.
 8.
 9.
 10.

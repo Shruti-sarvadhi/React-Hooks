@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useMemo } from 'react';
+import StyledBox from './StyledBox';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [size, setSize] = useState(100);
+
+  const boxStyle = useMemo(() => ({
+    width: `${size}px`,
+    height: `${size}px`,
+    backgroundColor: `hsl(${size % 360}, 50%, 50%)`,
+  }), [size]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>Dynamic Box</h1>
+      <input
+        type="range"
+        min="50"
+        max="200"
+        value={size}
+        onChange={(e) => setSize(Number(e.target.value))}
+      />
+      <StyledBox style={boxStyle} />
+    </div>
+  );
 }
 
-export default App
+export default App;
