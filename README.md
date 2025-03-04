@@ -37,7 +37,7 @@ yarn creat vite example-3 --template react
 7. Memoizing dynamic styles for a component.
 8. Optimizing sorting of an array.
 9. Memoizing a computed value based on multiple inputs.
-10.
+10. Optimizing transformation of raw data into a displayable format.
 
 # useCallback
 1. 
