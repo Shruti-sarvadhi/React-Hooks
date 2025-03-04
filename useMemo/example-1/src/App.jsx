@@ -4,6 +4,8 @@ function App() {
   const [count, setCount] = useState(0);
   const [number, setNumber] = useState(5);
 
+
+  // recalculating only when num changes.
   const factorial = useMemo(() => {
     console.log("Calculating factorial...");
     return calculateFactorial(number);
