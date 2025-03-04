@@ -54,16 +54,17 @@ https://medium.com/@umaishassan/what-the-heck-is-memo-usememo-and-usecallback-in
 10. Memoizes a callback that applies conditional updates
 
 # useRef
-1. 
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
+https://dev.to/samabaasi/mastering-reacts-useref-hook-a-deep-dive-1548
+1. Accessing DOM Element  
+2. Storing Previous Value
+3. Creating a Timer
+4. copy text to the clipboard
+5. Animating an Element with useRef
+6. Form Input Management
+7. Scroll Position Management
+8. Tracking Render Count
+9. Canvas Drawing
+10. Video Player Controls
 
 # useReducer
 https://dev.to/anshumanmahato/for-intricate-state-handling-try-out-the-usereducer-hook-1952
