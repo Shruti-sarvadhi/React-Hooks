@@ -1,39 +1,41 @@
-import { useEffect, useState } from 'react'
-
-
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { updateUser, clearUser } from "@/store/slices/user/userSlice";
 
 function Example7() {
-  const [name,setName] = useState([])
-  const [users,setUsers]=useState(()=>{
-    const savedName=localStorage.getItem("names")
-    return savedName?JSON.parse(savedName):[]
-  })
+  const [name, setName] = useState("");
+  const dispatch = useAppDispatch();
+  const users = useAppSelector((state) => state.user?.user?.users); // ✅ Get users from Redux Persist
+ 
+  
+  const handleAdd = (e) => {
+    e.preventDefault();
+    if (name.trim() === "") return;
+    dispatch(updateUser(name )); // ✅ Add user to Redux state
+    setName(""); // ✅ Clear input field
+  };
 
-  useEffect(()=>{
-    localStorage.setItem("names",JSON.stringify(users))
-  },[users])
-
-  const handleAdd=()=>{
-    if(name.trim()=="") return;
-    setUsers([...users,name])
-    setName("")
-  }
+  const handleClear = () => {
+    dispatch(clearUser()); // ✅ Clears all users
+  };
 
   return (
     <>
-    <form action="">
-      <input type="text" value={name} onChange={(e)=>setName(e.target.value)} />
-      <button onClick={handleAdd}>Add</button>
-    </form>
-    <p>saved users</p>
-    <ul>
-      {users.map((user,i)=>(
-        <li key={i}>{user}</li>
-      )
-      )}
-    </ul>
+      <form onSubmit={handleAdd}>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <button type="submit">Add</button>
+      </form>
+
+      <button onClick={handleClear}>Clear Users</button> {/* ✅ Clear button */}
+
+      <p>Saved Users</p>
+      <ul>
+        {users?.map((user, i) => (
+          <li key={i}>{user.name}</li>
+        ))}
+      </ul>
     </>
-  )
+  );
 }
 
-export default Example7
+export default Example7;

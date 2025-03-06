@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Home.css"; // Import the CSS file for styling
 
-const hooks = [
+export const hooks = [
   {
     name: "useState",
     examples: [
@@ -26,7 +26,7 @@ const hooks = [
       "Trigger Animation on State Change",
       "Fetch New Data on Prop Change",
       "Subscribe to Window Events",
-      "Local Storage Sync",
+      "Local Storage Sync*",
       "Cleanup Operations",
       "Integrate with Third-Party Libraries",
       "Debouncing Input for Search",
@@ -68,7 +68,7 @@ const hooks = [
       "Access DOM Elements",
       "Store Previous Values",
       "Create a Timer",
-      "Copy Text to Clipboard",
+      "Copy Text to Clipboard*",
       "Animate Elements",
       "Manage Form Inputs",
       "Track Scroll Position",
@@ -83,7 +83,7 @@ const hooks = [
       "Counter with Multiple Actions",
       "Form Handling",
       "Shopping Cart*",
-      "Todo List",
+      "Todo List*",
       "Light/Dark Theme Toggle",
       "Stopwatch (Start/Stop/Reset)",
       "API Data Fetching",

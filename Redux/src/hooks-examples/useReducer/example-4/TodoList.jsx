@@ -1,21 +1,18 @@
-import React, { useReducer, useState } from "react";
-
-const initialState = [];
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "add":
-      return [...state, { id: Date.now(), text: action.text }];
-    case "remove":
-      return state.filter((todo) => todo.id !== action.id);
-    default:
-      return state;
-  }
-}
+import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { addTodo, removeTodo } from "@/store/slices/features/todoSlice";
 
 function TodoList() {
-  const [state, dispatch] = useReducer(reducer, initialState);
   const [text, setText] = useState("");
+  const dispatch = useAppDispatch();
+  const todos = useAppSelector((state) => state.features.todos.todos); // ✅ Get todos from Redux
+
+  const handleAddTodo = () => {
+    if (text.trim() === "") return;
+
+    dispatch(addTodo({ id: Date.now(), text })); // ✅ Dispatch Redux action
+    setText(""); // ✅ Clear input
+  };
 
   return (
     <div className="p-4 border rounded-lg">
@@ -26,20 +23,18 @@ function TodoList() {
       />
       <button
         className="px-3 py-1 bg-green-500 text-white rounded"
-        onClick={() => {
-          dispatch({ type: "add", text });
-          setText("");
-        }}
+        onClick={handleAddTodo}
       >
         Add Todo
       </button>
+
       <ul className="mt-3">
-        {state.map((todo) => (
+        {todos.map((todo) => (
           <li key={todo.id} className="mt-2">
             {todo.text}
             <button
               className="ml-2 px-2 py-1 bg-red-500 text-white rounded"
-              onClick={() => dispatch({ type: "remove", id: todo.id })}
+              onClick={() => dispatch(removeTodo(todo.id))} // ✅ Dispatch remove action
             >
               Delete
             </button>

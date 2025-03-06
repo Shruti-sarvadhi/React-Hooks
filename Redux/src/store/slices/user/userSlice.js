@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "",
-  email: "",
-  avatar: "",
+  users: [], // ✅ Ensures `users` starts as an array
 };
 
 const userSlice = createSlice({
@@ -11,14 +9,19 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     updateUser: (state, action) => {
-      state.name = action.payload.name;
-      state.email = action.payload.email;
-      state.avatar = action.payload.avatar;
+      console.log("Action Payload:", action.payload);
+      console.log("Before Update - State:", state);
+
+      if (!Array.isArray(state.users)) {
+        state.users = []; // ✅ Ensures `users` is always an array
+      }
+
+      state.users.push({ name: action.payload }); // ✅ Store user object in array
+
+      console.log("After Update - State:", state);
     },
     clearUser: (state) => {
-      state.name = "";
-      state.email = "";
-      state.avatar = "";
+      state.users = []; // ✅ Clears Redux state
     },
   },
 });
