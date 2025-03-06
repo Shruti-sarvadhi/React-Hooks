@@ -33,14 +33,6 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 .app-container {
   display: flex;
   height: 100vh;
@@ -51,29 +43,55 @@
   height: 100vh;
   background: #2c3e50;
   color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
   transition: width 0.3s ease-in-out;
-  overflow: hidden;
-  
+  padding: 10px;
+
+  /* ✅ Ensures sidebar scrolls when content is too long */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ✅ Custom Scrollbar Styling */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #2c3e50;
 }
 
 .sidebar.closed {
   width: 50px;
 }
 
-.sidebar nav {
+.sidebar-nav {
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
 
-.sidebar nav a {
+.sidebar-nav a,
+.hook-title {
   text-decoration: none;
   color: white;
   padding: 10px;
   display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
 }
 
-.sidebar nav a:hover {
+.sidebar-nav a:hover,
+.hook-title:hover {
   background: #34495e;
 }
 
@@ -86,7 +104,20 @@
   padding: 10px;
 }
 
+.example-links {
+  margin-left: 15px;
+  max-height: 80vh; /* Prevents overflowing too much */
+  overflow-y: auto;  /* Allows scrolling for long example lists */
+}
+
+
 .content {
   flex: 1;
+  margin-left: 250px; /* Prevents content from hiding behind sidebar */
   padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar.closed + .content {
+  margin-left: 50px; /* Adjusts content when sidebar is collapsed */
 }
