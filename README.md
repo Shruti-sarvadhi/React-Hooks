@@ -68,6 +68,7 @@ https://dev.to/samabaasi/mastering-reacts-useref-hook-a-deep-dive-1548
 
 # useReducer
 https://dev.to/anshumanmahato/for-intricate-state-handling-try-out-the-usereducer-hook-1952
+https://www.zachsnoek.com/blog/reducer-functions-without-the-switch
 1. Counter with Multiple Actions
 2. Form Handler
 3. Shopping Cart
