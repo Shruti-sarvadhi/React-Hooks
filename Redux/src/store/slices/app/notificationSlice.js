@@ -1,24 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  notifications: [], // Array of notifications
+  message: "",
+  type: "", // "success", "error", "info"
 };
 
 const notificationSlice = createSlice({
   name: "notifications",
   initialState,
   reducers: {
-    addNotification: (state, action) => {
-      state.notifications.push(action.payload); // Add a new notification
+    showNotification: (state, action) => {
+      state.message = action.payload.message;
+      state.type = action.payload.type;
     },
-    removeNotification: (state, action) => {
-      state.notifications = state.notifications.filter(n => n.id !== action.payload); // Remove by ID
-    },
-    clearNotifications: (state) => {
-      state.notifications = []; // Clear all notifications
+    clearNotification: (state) => {
+      state.message = "";
+      state.type = "";
     },
   },
 });
 
-export const { addNotification, removeNotification, clearNotifications } = notificationSlice.actions;
+export const { showNotification, clearNotification } = notificationSlice.actions;
 export default notificationSlice.reducer;

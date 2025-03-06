@@ -5,9 +5,9 @@ const hooks = [
   {
     name: "useState",
     examples: [
-      "Form Input Handling",
-      "Conditional Rendering",
-      "Toggle Flags (true/false)",
+      "Form Input Handling*",
+      "Conditional Rendering*",
+      "Toggle Flags (true/false)*",
       "Counter",
       "Get API Data and Store in State",
       "Countdown Timer",
@@ -22,7 +22,7 @@ const hooks = [
     examples: [
       "Fetch API Data",
       "Managing Timers or Intervals",
-      "Multi-Language Localization",
+      "Multi-Language Localization*",
       "Trigger Animation on State Change",
       "Fetch New Data on Prop Change",
       "Subscribe to Window Events",
@@ -55,7 +55,7 @@ const hooks = [
       "Debounced Callback for Input Handling",
       "Avoid Recreating Callbacks in Lists",
       "Memoized Toggle Function",
-      "Handle Form Submission",
+      "Handle Form Submission*",
       "Callback for External API Calls",
       "Click Events in List Items",
       "Memoized Timer Reset Function",
@@ -82,7 +82,7 @@ const hooks = [
     examples: [
       "Counter with Multiple Actions",
       "Form Handling",
-      "Shopping Cart",
+      "Shopping Cart*",
       "Todo List",
       "Light/Dark Theme Toggle",
       "Stopwatch (Start/Stop/Reset)",

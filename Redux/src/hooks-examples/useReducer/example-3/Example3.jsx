@@ -16,7 +16,7 @@ const Example3 = () => {
   return (
     <div>
       <h2>Products</h2>
-      {products.map((product) => (
+      {products?.map((product) => (
         <button key={product.id} onClick={() => dispatch(addToCart({ ...product }))}>
           Add {product.name} (${product.price})
         </button>
@@ -25,7 +25,7 @@ const Example3 = () => {
       <h2>Cart</h2>
       <ul>
         {cart.length > 0 ? (
-          cart.map((item) => (
+          cart?.map((item) => (
             <li key={item.id}>
               {item.name} - ${item.price}
               <button onClick={() => dispatch(removeFromCart(item.id))}>Remove</button>

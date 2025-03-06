@@ -1,29 +1,30 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setLanguage } from "@/store/slices/app/languageSlice";
 
-import { useEffect } from 'react'
+const Example3 = () => {
+  const dispatch = useAppDispatch();
+  const language = useAppSelector((state) => state.app.language.language); // ✅ Get language from Redux
+  const [translation, setTranslation] = useState({});
 
-function Example3() {
-  const [language, setLanguage] = useState('en')
-  const [translation,setTranslation]=useState({})
+  // Load translations dynamically when language changes
+  useEffect(() => {
+    import(`./locales/${language}.json`)
+      .then((data) => setTranslation(data))
+      .catch((err) => console.error("Translation Load Error:", err));
+  }, [language]);
 
-
-  //importing translation stored in locales folder or API to update content dynamically upon language change
-  useEffect(()=>{
-    import(`./locales/${language}.json`).
-    then((data)=>setTranslation(data)).
-    catch((err)=>console.log(err))
-  },[language])
   return (
     <>
-    <h1>{translation.welcome}</h1>
-    <button>{translation.button_text}</button>
+      <h1>{translation.welcome || "Loading..."}</h1>
+      <button>{translation.button_text || "Loading..."}</button>
 
-    <div>
-      <button onClick={()=>setLanguage("en")}>English</button>
-      <button onClick={()=>setLanguage("es")}>Español</button>
-    </div>
+      <div>
+        <button onClick={() => dispatch(setLanguage("en"))}>English</button>
+        <button onClick={() => dispatch(setLanguage("es"))}>Español</button>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Example3
+export default Example3;

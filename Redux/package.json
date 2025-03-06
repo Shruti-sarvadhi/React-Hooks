@@ -13,11 +13,13 @@
     "@reduxjs/toolkit": "^2.6.0",
     "aos": "^2.3.4",
     "axios": "^1.8.1",
+    "crypt-vault": "^0.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.2.0",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "redux-persist-transform-encrypt": "^5.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
