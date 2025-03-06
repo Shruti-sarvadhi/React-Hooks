@@ -5,18 +5,18 @@ import { updateUser, clearUser } from "@/store/slices/user/userSlice";
 function Example7() {
   const [name, setName] = useState("");
   const dispatch = useAppDispatch();
-  const users = useAppSelector((state) => state.user?.user?.users); // ✅ Get users from Redux Persist
+  const users = useAppSelector((state) => state.user?.user?.users); //   Get users from Redux Persist
  
   
   const handleAdd = (e) => {
     e.preventDefault();
     if (name.trim() === "") return;
-    dispatch(updateUser(name )); // ✅ Add user to Redux state
-    setName(""); // ✅ Clear input field
+    dispatch(updateUser(name )); //   Add user to Redux state
+    setName(""); //   Clear input field
   };
 
   const handleClear = () => {
-    dispatch(clearUser()); // ✅ Clears all users
+    dispatch(clearUser()); //   Clears all users
   };
 
   return (
@@ -26,7 +26,7 @@ function Example7() {
         <button type="submit">Add</button>
       </form>
 
-      <button onClick={handleClear}>Clear Users</button> {/* ✅ Clear button */}
+      <button onClick={handleClear}>Clear Users</button> {/*   Clear button */}
 
       <p>Saved Users</p>
       <ul>

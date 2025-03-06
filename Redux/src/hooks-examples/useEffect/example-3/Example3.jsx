@@ -4,7 +4,7 @@ import { setLanguage } from "@/store/slices/app/languageSlice";
 
 const Example3 = () => {
   const dispatch = useAppDispatch();
-  const language = useAppSelector((state) => state.app.language.language); // ✅ Get language from Redux
+  const language = useAppSelector((state) => state.app.language.language); //   Get language from Redux
   const [translation, setTranslation] = useState({});
 
   // Load translations dynamically when language changes

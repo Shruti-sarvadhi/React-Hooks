@@ -11,10 +11,10 @@ function Example4() {
     if (TextRef.current) {
       navigator.clipboard.writeText(TextRef.current.value);
 
-      // ✅ Show notification instead of alert
+      //   Show notification instead of alert
       dispatch(showNotification({ message: "Text copied to clipboard!", type: "success" }));
 
-      // ✅ Auto-clear notification after 3 seconds
+      //   Auto-clear notification after 3 seconds
       setTimeout(() => {
         dispatch(clearNotification());
       }, 3000);
@@ -23,7 +23,7 @@ function Example4() {
 
   return (
     <>
-      {/* ✅ Show Notification */}
+      {/*   Show Notification */}
       {notification.message && (
         <div
           style={{

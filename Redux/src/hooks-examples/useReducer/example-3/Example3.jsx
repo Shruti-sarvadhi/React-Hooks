@@ -6,7 +6,7 @@ const Example3 = () => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.user.cart.cart) || []; // Ensure cart is an array
 
-  console.log("Cart from Redux:", cart); // ✅ Debugging cart state
+  console.log("Cart from Redux:", cart); //   Debugging cart state
 
   const products = [
     { id: 1, name: "Shirt", price: 20 },

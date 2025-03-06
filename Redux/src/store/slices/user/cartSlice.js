@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cart: [], // ✅ Ensure cart is an array
+  cart: [], //   Ensure cart is an array
 };
 
 const cartSlice = createSlice({
@@ -9,9 +9,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      console.log("Adding to cart:", action.payload); // ✅ Log what is being added
+      console.log("Adding to cart:", action.payload); //   Log what is being added
       state.cart = [...state.cart, action.payload];
-      console.log("Updated Cart:", state.cart); // ✅ Log updated cart state
+      console.log("Updated Cart:", state.cart); //   Log updated cart state
     },
     
     removeFromCart: (state, action) => {

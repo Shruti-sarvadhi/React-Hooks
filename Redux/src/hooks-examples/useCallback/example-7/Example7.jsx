@@ -1,24 +1,18 @@
-import React, { useState, useCallback } from "react";
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { fetchUsers, clearUser } from "@/store/slices/user/userSlice";
 
 function Example7() {
   const [query, setQuery] = useState("");
-  const [data, setData] = useState(null);
+  const dispatch = useAppDispatch();
+  const { user, loading, error } = useAppSelector((state) => state.user?.user);
+  console.log(query);
+  
 
-  //Memoizes a function that fetches data based on user input
-  const fetchData = useCallback(async () => {
-    if (!query) return;
-
-    try {
-      const response = await fetch(`https://jsonplaceholder.typicode.com/users/${query}`);
-      if (!response.ok) {
-        throw new Error("User not found");
-      }
-      const result = await response.json();
-      setData(result);
-    } catch (error) {
-      setData({ error: error.message });
-    }
-  }, [query]);
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    dispatch(fetchUsers(query));
+  };
 
   return (
     <div>
@@ -29,8 +23,12 @@ function Example7() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button onClick={fetchData}>Search</button>
-      <p>Data: {data ? JSON.stringify(data, null, 2) : "No data"}</p>
+      <button onClick={handleSearch} disabled={loading}>
+        {loading ? "Loading..." : "Search"}
+      </button>
+      <button onClick={() => dispatch(clearUser())}>Clear</button>
+      {error && <p style={{ color: "red" }}>Error: {error}</p>}
+      {user && <pre>{JSON.stringify(user, null, 2)}</pre>}
     </div>
   );
 }

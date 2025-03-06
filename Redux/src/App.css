@@ -49,12 +49,12 @@
   transition: width 0.3s ease-in-out;
   padding: 10px;
 
-  /* ✅ Ensures sidebar scrolls when content is too long */
+  /*   Ensures sidebar scrolls when content is too long */
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-/* ✅ Custom Scrollbar Styling */
+/*   Custom Scrollbar Styling */
 .sidebar::-webkit-scrollbar {
   width: 8px;
 }

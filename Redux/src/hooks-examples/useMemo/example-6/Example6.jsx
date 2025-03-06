@@ -1,17 +1,18 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import UserList from './UserList';
+import { useEffect, useMemo } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { fetchUsers } from "@/store/slices/user/userSlice";
+import UserList from "./UserList";
 
 function Example6() {
-  const [users, setUsers] = useState(null);
+  const dispatch = useAppDispatch();
+  const { users, loading, error } = useAppSelector((state) => state.user?.user);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+    dispatch(fetchUsers()); //   Fetch users when component mounts
+  }, [dispatch]);
 
+  //   Memoized user processing
   const processedUsers = useMemo(() => {
-    if (!users) return [];
     return users.map((user) => ({
       id: user.id,
       name: user.name,
@@ -22,6 +23,8 @@ function Example6() {
   return (
     <div>
       <h1>User List</h1>
+      {loading && <p>Loading...</p>} {/*   Show loading state */}
+      {error && <p>Error: {error}</p>} {/*   Show error if API fails */}
       <UserList users={processedUsers} />
     </div>
   );

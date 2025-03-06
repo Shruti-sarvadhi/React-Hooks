@@ -5,13 +5,13 @@ import { addTodo, removeTodo } from "@/store/slices/features/todoSlice";
 function TodoList() {
   const [text, setText] = useState("");
   const dispatch = useAppDispatch();
-  const todos = useAppSelector((state) => state.features.todos.todos); // ✅ Get todos from Redux
+  const todos = useAppSelector((state) => state.features.todos.todos); //   Get todos from Redux
 
   const handleAddTodo = () => {
     if (text.trim() === "") return;
 
-    dispatch(addTodo({ id: Date.now(), text })); // ✅ Dispatch Redux action
-    setText(""); // ✅ Clear input
+    dispatch(addTodo({ id: Date.now(), text })); //   Dispatch Redux action
+    setText(""); //   Clear input
   };
 
   return (
@@ -34,7 +34,7 @@ function TodoList() {
             {todo.text}
             <button
               className="ml-2 px-2 py-1 bg-red-500 text-white rounded"
-              onClick={() => dispatch(removeTodo(todo.id))} // ✅ Dispatch remove action
+              onClick={() => dispatch(removeTodo(todo.id))} //   Dispatch remove action
             >
               Delete
             </button>

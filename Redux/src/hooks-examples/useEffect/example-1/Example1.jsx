@@ -1,36 +1,32 @@
-import { useState, useEffect } from "react";
-
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { fetchUsers } from "@/store/slices/user/userSlice";
 import Card from "./Card";
-import axios from "axios";
 
 function Example1() {
-  const [users, setUsers] = useState([]); 
+  const dispatch = useAppDispatch();
+  const { users, loading, error } = useAppSelector((state) => state.user?.user);
 
-  //fetch API when app loads so this runs only once 
   useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => setUsers(res.data)) 
-      .catch((err) => console.log(err));
-  }, []);
+    dispatch(fetchUsers()); //   Fetch users when component mounts
+  }, [dispatch]);
 
   return (
     <>
       <h1>User Information</h1>
+      {loading && <p>Loading...</p>} {/*   Show loading state */}
+      {error && <p>Error: {error}</p>} {/*   Show error if API fails */}
       <ul>
-        {users.length > 0 ? (
-          users.map((person) => (
+        {users.length > 0 &&
+          users?.map((person) => (
             <Card
-              key={person.id} 
+              key={person.id}
               name={person.name}
               username={person.username}
               email={person.email}
               website={person.website}
             />
-          ))
-        ) : (
-          <p>Loading...</p> 
-        )}
+          ))}
       </ul>
     </>
   );
