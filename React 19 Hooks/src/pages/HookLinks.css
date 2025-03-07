@@ -1,0 +1,54 @@
+.sidebar {
+    width: 350px;
+    height: 100vh;
+    background-color: #282c34;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: width 0.3s ease-in-out;
+    padding-top: 20px;
+  }
+  
+  .sidebar.closed {
+    width: 100px;
+  }
+  
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .hook-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  .hook-links li {
+    padding: 10px 20px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .hook-links li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .hook-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .hook-link:hover {
+    color: #61dafb;
+  }
+  
