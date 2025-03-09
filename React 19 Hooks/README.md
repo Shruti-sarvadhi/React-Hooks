@@ -48,18 +48,18 @@
 5. Animating a Component with CSS Transitions
 
 # useOptimistic
-1. 
-2. 
-3. 
-4. 
-5. 
+1. Optimistic Todo update
+2. Optimistic Post Liking
+3. Optimistic Comment Posting
+4. Optimistic Profile Update
+5. Optimistic Product Stock Update
 
 # useSyncExternalStore
-1. 
-2. 
-3. 
-4. 
-5. 
+1. Syncing with a Redux-like Store
+2. Syncing with a Local Storage Store
+3. Syncing with Scroll Position
+4. Syncing with a Geolocation API
+5. Syncing with a Custom Event Store
 
 
 
