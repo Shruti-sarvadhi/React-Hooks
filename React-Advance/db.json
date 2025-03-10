@@ -1,10 +1,65 @@
 {
   "users": [
-    { "id": 1, "name": "John Doe", "email": "john@example.com" },
-    { "id": 2, "name": "Jane Doe", "email": "jane@example.com" }
+    {
+      "id": "1741605854166",
+      "name": "dixita",
+      "email": "d@gmail.com",
+      "phone": "1234567890",
+      "password": "nbndjd"
+    },
+    {
+      "id": "1741605867502",
+      "name": "dixita",
+      "email": "d@gmailcom",
+      "phone": "1234567890",
+      "password": "nbndjd"
+    },
+    {
+      "id": "1741606715178",
+      "name": "shruti",
+      "email": "s@gmail.com",
+      "phone": "1234567891",
+      "password": "123456"
+    },
+    {
+      "id": "1741606754541",
+      "name": "Shruti K.",
+      "email": "s@gmail.com",
+      "phone": "0987654321",
+      "password": "9876fgh"
+    },
+    {
+      "id": "1741606850143",
+      "name": "Shruti K.",
+      "email": "s@gmail.com",
+      "phone": "9876543219",
+      "password": "123456"
+    },
+    {
+      "id": "1741607148878",
+      "name": "Shruti K.",
+      "email": "s@gmail.com",
+      "phone": "1245367992",
+      "password": "sss902"
+    },
+    {
+      "id": 1741618050339,
+      "name": "Shruti K.",
+      "email": "s@gmail.com",
+      "phone": "(604) 765-4321",
+      "password": "1234566"
+    }
   ],
   "posts": [
-    { "id": 1, "title": "React Guide", "content": "React is a JavaScript library for building UI" },
-    { "id": 2, "title": "TypeScript Basics", "content": "TypeScript is a superset of JavaScript" }
+    {
+      "id": "1",
+      "title": "React Guide",
+      "content": "React is a JavaScript library for building UI"
+    },
+    {
+      "id": "2",
+      "title": "TypeScript Basics",
+      "content": "TypeScript is a superset of JavaScript"
+    }
   ]
 }
