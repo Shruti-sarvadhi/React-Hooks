@@ -34,8 +34,14 @@ function App() {
 
       <ul className="mt-2 border rounded p-4 bg-white">
         {users.length > 0 ? (
-          users.map((user) => (
+          users?.map((user) => (
             <li key={user.id} className="border-b py-2">
+              <div>
+                {" "}
+                {user.profileImage && (
+                  <img src={user.profileImage} alt="Profile" className="w-12 h-12 rounded-full" />
+                )}
+              </div>
               <p>{user.name}</p>
               <p>{user.email}</p>
               <p>{user.phone}</p>

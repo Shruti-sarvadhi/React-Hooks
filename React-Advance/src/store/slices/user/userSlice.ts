@@ -10,6 +10,7 @@ interface User {
   email: string;
   phone: string;
   password: string;
+  profileImage?: string; //  field for Base64 image
 }
 
 // Initial State
