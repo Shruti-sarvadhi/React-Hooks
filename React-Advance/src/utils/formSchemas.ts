@@ -23,7 +23,7 @@ export const userSchema = (countryCode: string) =>
     phone: yup
       .string()
       .test("valid-phone", "Invalid phone number for selected country", (value) =>
-        validatePhoneNumber(value || "", countryCode)
+        validatePhoneNumber(value || "", countryCode),
       )
       .required("Phone number is required"),
     password: yup
@@ -31,3 +31,5 @@ export const userSchema = (countryCode: string) =>
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
   });
+
+

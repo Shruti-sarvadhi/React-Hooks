@@ -1,2 +1,2 @@
 export * as UserAPI from "./UserAPI";
-export * as ProductAPI from "./ProductAPI";
+export * as ProductAPI from "./PostAPI";

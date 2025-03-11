@@ -2,16 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import API_ENDPOINTS from "@/apis/configs/endpoints";
 import { getRequest, postRequest, putRequest, deleteRequest } from "@/apis/configs/axiosUtils";
 import { RootState } from "@/store/store";
+import { User } from "@/types/types";
 
-// Define User Type
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  password: string;
-  profileImage?: string; //  field for Base64 image
-}
+
 
 // Initial State
 interface UserState {
