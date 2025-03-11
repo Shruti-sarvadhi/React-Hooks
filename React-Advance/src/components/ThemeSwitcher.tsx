@@ -13,7 +13,6 @@ const ThemeSwitcher = () => {
   useEffect(() => {
     document.body.classList.toggle("dark", theme === "dark");
     document.body.style.backgroundColor = theme === "dark" ? "#1a202c" : "#ffffff"; // Dark: Gray-900, Light: White
-    document.body.style.color = theme === "dark" ? "#ffffff":"#1a202c"; // Dark: Gray-900, Light: White
   }, [theme]);
 
   const toggleTheme = () => {
