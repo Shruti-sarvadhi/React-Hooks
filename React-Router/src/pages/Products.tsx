@@ -1,20 +1,9 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import {
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  CardMedia,
-  CardActions,
-  Button,
-  TextField,
-  Box,
-} from '@mui/material';
+import { Container, Typography, TextField, Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { fetchProducts } from '@/store/slices/product/productSlice';
-import { Link } from 'react-router-dom';
 import { useDebounce } from '@/hooks';
+import ProductCard from '@/components/ProductCard';
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -58,39 +47,11 @@ const Products: React.FC = () => {
           {error}
         </Typography>
       ) : (
-        <Grid container spacing={4}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filteredProducts.map((product) => (
-            <Grid item key={product.id} xs={12} sm={6} md={4}>
-              <Card>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={product.image}
-                  alt={product.title}
-                  sx={{ objectFit: 'contain', p: 1 }}
-                />
-                <CardContent>
-                  <Typography variant="h6" component="div">
-                    {product.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    ${product.price}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    variant="contained"
-                    component={Link}
-                    to={`/product/${product.id}`}
-                  >
-                    View Details
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
+            <ProductCard key={product.id} product={product} />
           ))}
-        </Grid>
+        </div>
       )}
     </Container>
   );
