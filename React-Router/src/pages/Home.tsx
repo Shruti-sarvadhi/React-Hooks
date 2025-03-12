@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Typography,
   Container,
@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { fetchProducts } from "@/store/slices/product/productSlice";
-import {ProductCard,Footer} from "@/components"
+import {ProductCard} from "@/components"
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -74,12 +74,6 @@ const Home: React.FC = () => {
         </div>
         )}
       </Container>
-
-      {/* Nested routes will render here */}
-      <Outlet />
-
-      {/* Footer Component */}
-      <Footer />
     </>
   );
 };
