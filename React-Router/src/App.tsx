@@ -1,31 +1,25 @@
-// src/App.tsx
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { publicRoutes, privateRoutes } from "@/routes/routesConfig";
-import ProtectedRoute from "@/routes/ProtectedRoute"; // Your protected route component
-import Layout from "@/pages/Layout";
+import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import { useAppSelector } from "@/store";
+import AppRoutes from "@/routes/route"; // Import the separate routes component
 
 const App: React.FC = () => {
+  const themeMode = useAppSelector((state) => state.settings.theme.theme);
+
+  const theme = createTheme({
+    palette: {
+      mode: themeMode, // Dynamically apply theme
+    },
+  });
+
   return (
-    <Router>
-      <Routes>
-        {/* Wrap all routes with the Layout */}
-        <Route path="/" element={<Layout />}>
-          {/* Public routes */}
-          {publicRoutes.map(({ path, element }, index) => (
-            <Route key={index} path={path} element={element} />
-          ))}
-          {/* Private routes wrapped in ProtectedRoute */}
-          {privateRoutes.map(({ path, element }, index) => (
-            <Route
-              key={index}
-              path={path}
-              element={<ProtectedRoute>{element}</ProtectedRoute>}
-            />
-          ))}
-        </Route>
-      </Routes>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <AppRoutes /> {/* Use the separate AppRoutes component */}
+      </Router>
+    </ThemeProvider>
   );
 };
 

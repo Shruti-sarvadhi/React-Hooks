@@ -1,11 +1,6 @@
 // src/routes/routesConfig.tsx
-import Home from "@/pages/Home";
-import Login from "@/pages/Login";
-import ProductDetails from "@/pages/ProductDetails";
-import Cart from "@/pages/Cart";
-import Checkout from "@/pages/Checkout";
-import Profile from "@/pages/Profile";
-import Products from "@/pages/Products";
+import {Home,Login,Products,ProductDetails,Cart,Checkout,Profile} from "@/pages";
+
 
 export const publicRoutes = [
   { path: "login", element: <Login /> },

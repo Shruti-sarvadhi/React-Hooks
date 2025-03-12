@@ -1,6 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Product } from "@/types/product"; // Make sure your Product type is defined
+import { Product } from "@/types/product"; // Ensure Product type is correctly defined
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 
 interface ProductCardProps {
   product: Product;
@@ -14,20 +21,28 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div
-      className="bg-white shadow-md rounded overflow-hidden transform transition duration-300 hover:scale-105 cursor-pointer"
+    <Card 
+      sx={{ maxWidth: 345, transition: "0.3s", "&:hover": { transform: "scale(1.05)" } }} 
       onClick={handleClick}
     >
-      <img
-        src={product.image}
-        alt={product.title}
-        className="w-full h-48 object-contain p-2"
-      />
-      <div className="p-4">
-        <h6 className="text-lg font-semibold">{product.title}</h6>
-        <p className="text-gray-600">${product.price}</p>
-      </div>
-    </div>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="200"
+          image={product.image}
+          alt={product.title}
+          sx={{ objectFit: "contain", padding: 2 }}
+        />
+        <CardContent>
+          <Typography variant="h6" component="div">
+            {product.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            ${product.price}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 };
 

@@ -14,19 +14,25 @@ import {
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "@/store";
 import { logoutUser } from "@/store/slices/user/authSlice";
+import { toggleTheme } from "@/store/slices/settings/themeSlice";
 import { useNotificationContext } from "@/context/NotificationContext";
+import { useToggle } from "@/hooks";
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user.auth);
   const cartItems = useAppSelector((state) => state.cart.cart.carts);
+  const theme = useAppSelector((state) => state.settings.theme.theme);
   const { notifications, removeNotification } = useNotificationContext();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [isDark, toggleThemeLocal] = useToggle(theme === "dark");
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -41,10 +47,15 @@ const Navbar: React.FC = () => {
     setAnchorEl(null);
   };
 
+  const handleThemeToggle = () => {
+    toggleThemeLocal(); // Local toggle
+    dispatch(toggleTheme()); // Redux toggle
+  };
+
   const open = Boolean(anchorEl);
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="primary">
       <Toolbar>
         <Typography
           variant="h6"
@@ -94,6 +105,9 @@ const Navbar: React.FC = () => {
             )}
           </List>
         </Popover>
+        <IconButton color="inherit" onClick={handleThemeToggle}>
+          {isDark ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
         {user ? (
           <>
             <IconButton color="inherit" component={Link} to="/profile">
