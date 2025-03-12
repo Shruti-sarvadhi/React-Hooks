@@ -62,6 +62,7 @@ const Login: React.FC = () => {
           >
             {loading ? "Logging in..." : "Login"}
           </Button>
+          <small className="text-xs">for login check readme</small>
         </form>
       </Box>
     </Container>
